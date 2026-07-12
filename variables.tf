@@ -74,12 +74,12 @@ EOT
     single_placement_group       = optional(bool) # Default: true
     tags                         = optional(map(string))
     zones                        = optional(list(string))
-    network_profile = object({
+    network_profile = list(object({
       accelerated_networking = optional(bool)
       dns_settings = optional(object({
         dns_servers = list(string)
       }))
-      ip_configuration = object({
+      ip_configuration = list(object({
         application_gateway_backend_address_pool_ids = optional(set(string))
         application_security_group_ids               = optional(set(string))
         load_balancer_backend_address_pool_ids       = optional(set(string))
@@ -92,12 +92,12 @@ EOT
           name              = string
         }))
         subnet_id = string
-      })
+      }))
       ip_forwarding             = optional(bool) # Default: false
       name                      = string
       network_security_group_id = optional(string)
       primary                   = bool
-    })
+    }))
     os_profile = object({
       admin_password       = optional(string)
       admin_username       = string
@@ -122,7 +122,7 @@ EOT
       enabled     = optional(bool) # Default: true
       storage_uri = string
     }))
-    extension = optional(object({
+    extension = optional(list(object({
       auto_upgrade_minor_version = optional(bool)
       name                       = string
       protected_settings         = optional(string)
@@ -131,38 +131,38 @@ EOT
       settings                   = optional(string)
       type                       = string
       type_handler_version       = string
-    }))
+    })))
     identity = optional(object({
       identity_ids = optional(set(string))
       type         = string
     }))
     os_profile_linux_config = optional(object({
       disable_password_authentication = optional(bool) # Default: false
-      ssh_keys = optional(object({
+      ssh_keys = optional(list(object({
         key_data = optional(string)
         path     = string
-      }))
+      })))
     }))
-    os_profile_secrets = optional(object({
+    os_profile_secrets = optional(list(object({
       source_vault_id = string
-      vault_certificates = optional(object({
+      vault_certificates = optional(list(object({
         certificate_store = optional(string)
         certificate_url   = string
-      }))
-    }))
+      })))
+    })))
     os_profile_windows_config = optional(object({
-      additional_unattend_config = optional(object({
+      additional_unattend_config = optional(list(object({
         component    = string
         content      = string
         pass         = string
         setting_name = string
-      }))
+      })))
       enable_automatic_upgrades = optional(bool)
       provision_vm_agent        = optional(bool)
-      winrm = optional(object({
+      winrm = optional(list(object({
         certificate_url = optional(string)
         protocol        = string
-      }))
+      })))
     }))
     plan = optional(object({
       name      = string
@@ -175,13 +175,13 @@ EOT
       max_unhealthy_upgraded_instance_percent = optional(number) # Default: 20
       pause_time_between_batches              = optional(string) # Default: "PT0S"
     }))
-    storage_profile_data_disk = optional(object({
+    storage_profile_data_disk = optional(list(object({
       caching           = optional(string)
       create_option     = string
       disk_size_gb      = optional(number)
       lun               = number
       managed_disk_type = optional(string)
-    }))
+    })))
     storage_profile_image_reference = optional(object({
       id        = optional(string)
       offer     = optional(string)
@@ -216,13 +216,13 @@ EOT
         file_path          = optional(string)
         storage_account_id = optional(string)
       })
-      filter = optional(object({
+      filter = optional(list(object({
         local_ip_address  = optional(string)
         local_port        = optional(string)
         protocol          = string
         remote_ip_address = optional(string)
         remote_port       = optional(string)
-      }))
+      })))
       machine_scope = optional(object({
         exclude_instance_ids = optional(list(string))
         include_instance_ids = optional(list(string))
