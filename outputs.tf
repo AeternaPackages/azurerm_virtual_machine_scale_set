@@ -1,4 +1,9 @@
 # --- azurerm_virtual_machine_scale_set ---
+output "virtual_machine_scale_sets_id" {
+  description = "Map of id values across all virtual_machine_scale_sets, keyed the same as var.virtual_machine_scale_sets"
+  value       = module.virtual_machine_scale_sets.virtual_machine_scale_sets_id
+}
+
 output "virtual_machine_scale_sets_automatic_os_upgrade" {
   description = "Map of automatic_os_upgrade values across all virtual_machine_scale_sets, keyed the same as var.virtual_machine_scale_sets"
   value       = module.virtual_machine_scale_sets.virtual_machine_scale_sets_automatic_os_upgrade
@@ -143,6 +148,11 @@ output "virtual_machine_scale_sets_zones" {
 }
 
 # --- azurerm_virtual_machine_scale_set_extension ---
+output "virtual_machine_scale_set_extensions_id" {
+  description = "Map of id values across all virtual_machine_scale_set_extensions, keyed the same as var.virtual_machine_scale_set_extensions"
+  value       = module.virtual_machine_scale_set_extensions.virtual_machine_scale_set_extensions_id
+}
+
 output "virtual_machine_scale_set_extensions_auto_upgrade_minor_version" {
   description = "Map of auto_upgrade_minor_version values across all virtual_machine_scale_set_extensions, keyed the same as var.virtual_machine_scale_set_extensions"
   value       = module.virtual_machine_scale_set_extensions.virtual_machine_scale_set_extensions_auto_upgrade_minor_version
@@ -210,6 +220,11 @@ output "virtual_machine_scale_set_extensions_virtual_machine_scale_set_id" {
 }
 
 # --- azurerm_virtual_machine_scale_set_packet_capture ---
+output "virtual_machine_scale_set_packet_captures_id" {
+  description = "Map of id values across all virtual_machine_scale_set_packet_captures, keyed the same as var.virtual_machine_scale_set_packet_captures"
+  value       = module.virtual_machine_scale_set_packet_captures.virtual_machine_scale_set_packet_captures_id
+}
+
 output "virtual_machine_scale_set_packet_captures_filter" {
   description = "Map of filter values across all virtual_machine_scale_set_packet_captures, keyed the same as var.virtual_machine_scale_set_packet_captures"
   value       = module.virtual_machine_scale_set_packet_captures.virtual_machine_scale_set_packet_captures_filter
