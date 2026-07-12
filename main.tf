@@ -5,7 +5,7 @@ locals {
     for k1, v1 in var.virtual_machine_scale_sets : {
       for k2, v2 in coalesce(v1.virtual_machine_scale_set_extensions, {}) :
       "${k1}/${k2}" => merge(v2, {
-        virtual_machine_scale_set_id = module.virtual_machine_scale_sets.virtual_machine_scale_sets["${k1}"].id
+        virtual_machine_scale_set_id = module.virtual_machine_scale_sets.virtual_machine_scale_sets_id["${k1}"]
       })
     }
   ]...)
@@ -14,7 +14,7 @@ locals {
     for k1, v1 in var.virtual_machine_scale_sets : {
       for k2, v2 in coalesce(v1.virtual_machine_scale_set_packet_captures, {}) :
       "${k1}/${k2}" => merge(v2, {
-        virtual_machine_scale_set_id = module.virtual_machine_scale_sets.virtual_machine_scale_sets["${k1}"].id
+        virtual_machine_scale_set_id = module.virtual_machine_scale_sets.virtual_machine_scale_sets_id["${k1}"]
       })
     }
   ]...)
