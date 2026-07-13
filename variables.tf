@@ -66,14 +66,14 @@ EOT
     name                         = string
     resource_group_name          = string
     upgrade_policy_mode          = string
-    automatic_os_upgrade         = optional(bool) # Default: false
+    automatic_os_upgrade         = optional(bool)
     eviction_policy              = optional(string)
     health_probe_id              = optional(string)
     license_type                 = optional(string)
-    overprovision                = optional(bool) # Default: true
+    overprovision                = optional(bool)
     priority                     = optional(string)
     proximity_placement_group_id = optional(string)
-    single_placement_group       = optional(bool) # Default: true
+    single_placement_group       = optional(bool)
     tags                         = optional(map(string))
     zones                        = optional(list(string))
     network_profile = list(object({
@@ -95,7 +95,7 @@ EOT
         }))
         subnet_id = string
       }))
-      ip_forwarding             = optional(bool) # Default: false
+      ip_forwarding             = optional(bool)
       name                      = string
       network_security_group_id = optional(string)
       primary                   = bool
@@ -121,7 +121,7 @@ EOT
       vhd_containers    = optional(set(string))
     })
     boot_diagnostics = optional(object({
-      enabled     = optional(bool) # Default: true
+      enabled     = optional(bool)
       storage_uri = string
     }))
     extension = optional(list(object({
@@ -139,7 +139,7 @@ EOT
       type         = string
     }))
     os_profile_linux_config = optional(object({
-      disable_password_authentication = optional(bool) # Default: false
+      disable_password_authentication = optional(bool)
       ssh_keys = optional(list(object({
         key_data = optional(string)
         path     = string
@@ -172,10 +172,10 @@ EOT
       publisher = string
     }))
     rolling_upgrade_policy = optional(object({
-      max_batch_instance_percent              = optional(number) # Default: 20
-      max_unhealthy_instance_percent          = optional(number) # Default: 20
-      max_unhealthy_upgraded_instance_percent = optional(number) # Default: 20
-      pause_time_between_batches              = optional(string) # Default: "PT0S"
+      max_batch_instance_percent              = optional(number)
+      max_unhealthy_instance_percent          = optional(number)
+      max_unhealthy_upgraded_instance_percent = optional(number)
+      pause_time_between_batches              = optional(string)
     }))
     storage_profile_data_disk = optional(list(object({
       caching           = optional(string)
@@ -196,9 +196,9 @@ EOT
       publisher                                = string
       type                                     = string
       type_handler_version                     = string
-      auto_upgrade_minor_version               = optional(bool) # Default: true
+      auto_upgrade_minor_version               = optional(bool)
       automatic_upgrade_enabled                = optional(bool)
-      failure_suppression_enabled              = optional(bool) # Default: false
+      failure_suppression_enabled              = optional(bool)
       force_update_tag                         = optional(string)
       protected_settings                       = optional(string)
       protected_settings_key_vault_id          = optional(string)
@@ -213,9 +213,9 @@ EOT
     virtual_machine_scale_set_packet_captures = optional(map(object({
       name                                = string
       network_watcher_id                  = string
-      maximum_bytes_per_packet            = optional(number) # Default: 0
-      maximum_bytes_per_session           = optional(number) # Default: 1073741824
-      maximum_capture_duration_in_seconds = optional(number) # Default: 18000
+      maximum_bytes_per_packet            = optional(number)
+      maximum_bytes_per_session           = optional(number)
+      maximum_capture_duration_in_seconds = optional(number)
       storage_location = object({
         file_path          = optional(string)
         storage_account_id = optional(string)
