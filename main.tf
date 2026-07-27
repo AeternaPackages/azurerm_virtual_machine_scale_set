@@ -21,18 +21,18 @@ locals {
 }
 
 module "virtual_machine_scale_sets" {
-  source                     = "git::https://github.com/AeternaModules/azurerm_virtual_machine_scale_set.git?ref=v4.80.0"
+  source                     = "git::https://github.com/AeternaModules/azurerm_virtual_machine_scale_set.git?ref=v4.81.0"
   virtual_machine_scale_sets = local.virtual_machine_scale_sets
 }
 
 module "virtual_machine_scale_set_extensions" {
-  source                               = "git::https://github.com/AeternaModules/azurerm_virtual_machine_scale_set_extension.git?ref=v4.80.0"
+  source                               = "git::https://github.com/AeternaModules/azurerm_virtual_machine_scale_set_extension.git?ref=v4.81.0"
   virtual_machine_scale_set_extensions = local.virtual_machine_scale_set_extensions
   depends_on                           = [module.virtual_machine_scale_sets]
 }
 
 module "virtual_machine_scale_set_packet_captures" {
-  source                                    = "git::https://github.com/AeternaModules/azurerm_virtual_machine_scale_set_packet_capture.git?ref=v4.80.0"
+  source                                    = "git::https://github.com/AeternaModules/azurerm_virtual_machine_scale_set_packet_capture.git?ref=v4.81.0"
   virtual_machine_scale_set_packet_captures = local.virtual_machine_scale_set_packet_captures
   depends_on                                = [module.virtual_machine_scale_sets]
 }
